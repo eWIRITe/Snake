@@ -21,6 +21,11 @@ public class UiButtonScript : MonoBehaviour
     //i use this sckript two times. and at second time i do not need Update()
     public bool needUpdate;
 
+
+    // scenes numbers
+    public int IndexOfStartScene = 0;
+    public int IndexOfLocetionScene = 1;
+
     public void Update()
     {
         if (needUpdate)
@@ -42,6 +47,7 @@ public class UiButtonScript : MonoBehaviour
 
     public void OnReturnButton()
     {
+        //player can moove
         Player.GetComponent<SnakeMoove>().isCanMoove = true;
         Time.timeScale = 1;
         EscPanel.SetActive(false);
@@ -49,13 +55,16 @@ public class UiButtonScript : MonoBehaviour
 
     public void OnQuitButton()
     {
+        //just quit from the game
         Application.Quit();
     }
 
     public void ToMenu()
     {
+        //player cam moove, becouse if not, it will be the bug, when we will plat again player coudnt moove 
         Player.GetComponent<SnakeMoove>().isCanMoove = true;
-        SceneManager.LoadScene(0);
+        //lod the menu scene
+        SceneManager.LoadScene(IndexOfStartScene);
     }
 
     public void ScoreOnLooserScreen()
@@ -65,6 +74,6 @@ public class UiButtonScript : MonoBehaviour
 
     public void OnAgainButton()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(IndexOfLocetionScene);
     }
 }

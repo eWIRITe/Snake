@@ -29,6 +29,7 @@ public class SnakeMoove : MonoBehaviour
 
     public void Awake()
     {
+        //add start pices
         for (int i = 0; i < BeginSize - 1; i++)
         {
             AddBodyPice();
@@ -87,6 +88,7 @@ public class SnakeMoove : MonoBehaviour
 
     public void AddBodyPice()
     {
+        //add pice
         GameObject newPice = Instantiate(BodyPicePref, BodyPices[BodyPices.Count - 1].position, BodyPices[BodyPices.Count - 1].rotation);
 
         //set parant
