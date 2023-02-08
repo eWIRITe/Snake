@@ -48,7 +48,7 @@ public class UiButtonScript : MonoBehaviour
 
     public void ToMenu()
     {
-        SceneManager.SetActiveScene(StartScene);
+        SceneManager.LoadScene(0);
     }
 
     public void ScoreOnLooserScreen()
