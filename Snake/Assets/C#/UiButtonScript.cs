@@ -18,20 +18,26 @@ public class UiButtonScript : MonoBehaviour
     //Loose screen
     public TMP_Text LooseScoreText;
 
+    //i use this sckript two times. and at second time i do not need Update()
+    public bool needUpdate;
+
     public void Update()
     {
-        //esc button
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (needUpdate)
         {
-            Player.GetComponent<SnakeMoove>().isCanMoove = false;
-            Time.timeScale = 0;
-            EscPanel.SetActive(true);
+            //esc button
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Player.GetComponent<SnakeMoove>().isCanMoove = false;
+                Time.timeScale = 0;
+                EscPanel.SetActive(true);
+            }
+
+            //Score
+            Text.text = Player.GetComponent<SnakeMoove>().BodyPices.Count.ToString();
+
+            ScoreOnLooserScreen();
         }
-
-        //Score
-        Text.text = Player.GetComponent<SnakeMoove>().BodyPices.Count.ToString();
-
-        ScoreOnLooserScreen();
     }
 
     public void OnReturnButton()
@@ -48,6 +54,7 @@ public class UiButtonScript : MonoBehaviour
 
     public void ToMenu()
     {
+        Player.GetComponent<SnakeMoove>().isCanMoove = true;
         SceneManager.LoadScene(0);
     }
 
